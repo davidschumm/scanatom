@@ -1,0 +1,19 @@
+$ pip install virtualenv
+
+------------------------------------------
+Go to your directory then call this command. It makes a virttual env in your directory.
+
+$ python -m venv virtual
+
+Activates virtual mode
+$ virtual\Scripts\activate.bat
+
+Installs your packages
+$ pip install xxxxx
+or 
+$ pip install -r requirements.txt
+
+
+
+Deactivates
+$ deactivate
