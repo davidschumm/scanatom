@@ -1,0 +1,97 @@
+		ScanAtom
+
+Create an app where stores can send receipts into the system for consumers that have to app and choose to do so. We will pay stores if they are able to submit receipts and we will make money from the use of people
+
+Genius scan but stores your receipts in categories. Creates an email so when stores ask to print or email,  you type the email and it goes to the app and stores it. You can spilt bills by clicking on each item and assigning a name to it. Then it can link to cash app and Amazon etc. and it will tell you your spend usage. (Maybe it can link to my personal finance app)
+
+ 
+
+When splitting the reciept create a way so that you can automatically cash app/Venmo request a friend and have the app calculate the payment fee
+
+
+
+Let people use the David@scanatom.com for email address at stores. When they sign up using that email everything gets filtered through scanatom that would be going to their emails. And they can still have it forwarded to their actual emails without having to give out their actual emails. Could prevent spam. It’s like a shield for emails 
+
+
+
+People can connect to business atom and they can scan receipts and use AI to auto fill the expenses in Maconomy, SAP, etc.
+
+
+
+
+
+The scan atom email will use reinforced learning (enforce by user) to train the junk email algorithm. 
+
+
+
+The cool thing about the email is that it’s not just an email address. Every reciept etc you send gets sent to the database and a scan is run on it so it can properly update your expense sheet. Then instead of looking through emails you can access all the addresses and companies you spent money at on the dashboard and you can click in and see the “messages”, “spending”, “taxes”, etc.
+
+
+
+it will show you all the taxes you spend and the money you spend and help you calculate tax savings. 
+It will prompt you if you are submitting and expense and ask if it falls under any of the certain categories (“school”, “business”, etc). If you choose one the system will know to set that receipt to the side in the “potential tax savings” bucket to later be accessed during tax season
+
+
+-Make a vin scanner, barcode scanner, etc
+
+-create an e-sign addition and use ideas from docu Adobe etc
+
+
+
+-physical movement scan: an extension of this program to scan videos of your golf swing (or any other sport) and use AI to detect flaws and show graphics of your muscle movement to help people get better at the sport / learn about the physics behind the activity. Think something like my first python professor used to do.
+
+
+
+Scan music like Shazam 
+
+
+
+Scan business cards and stuff like that.
+
+
+
+Have a word to pdf converter 
+
+
+
+Make QR codes 
+
+
+
+A nutrition label scanner : tell you what’s good and bad etc 
+
+
+
+Photo editing: desktop version works best with high resolution photos. Store photos on scanatom and it can be found on any of your devices
+
+
+
+
+
+Connect different devices in order to send documents. You can create text documents to send through the app so if you have a email or web link that you want to look at on your computer you can just type it in the app and send it to the application on your pc
+
+
+
+Create the safest, cleanest, most organized and efficient way to transfer and send any sort of document. Create a paid super secured documents service that have a token or blockchain type technology and can be mined by the owners of the document. No one else can access it. 
+
+
+
+Create a notery service
+
+
+
+Organize and store documents on all customers applications and show the paths for shared documents (like where did they go, who has/is accessing it at the moment). Show paths for deleted documents. 
+
+
+
+Create function similar to Akita that can determine the level of risk associated with each transferred document and the information that is risky
+
+
+
+https://www.youtube.com/watch?v=oXlwWbU8l2o&t=189s
+https://python.plainenglish.io/document-scanner-python-64b73b0fed31
+https://learnopencv.com/homography-examples-using-opencv-python-c/
+https://www.pyimagesearch.com/2016/03/21/ordering-coordinates-clockwise-with-python-and-opencv/
+https://theailearner.com/tag/cv2-warpperspective/
+https://www.reddit.com/r/learnmachinelearning/comments/ad7uvs/i_built_my_own_document_scanner_using_opencv_and/
+
