@@ -1,0 +1,28 @@
+$ pip install virtualenv
+
+$ python -m venv virtual
+
+$ pip install flask
+
+$ set FLASK_ENV=development
+(enables debug mode)
+
+$ set FLASK_APP=server 
+(my flask app file name is server.py)
+
+$ flask run
+
+
+
+Videos
+1. https://www.youtube.com/watch?v=YzUEhtHgX64
+2. https://www.youtube.com/watch?v=z1dIrYMmQy4
+3. https://www.youtube.com/watch?v=GVCvC-gDSAM
+4. https://www.youtube.com/watch?v=9XeZMvGXCSw
+
+https://flinkhub.com/static/files/File-sharing-webapp-specifications.pdf
+
+https://robomongo.org/download
+https://flask-pymongo.readthedocs.io/en/latest/
+https://www.mongodb.com/try/download/community
+https://flask.palletsprojects.com/en/2.0.x/quickstart/#debug-mode
