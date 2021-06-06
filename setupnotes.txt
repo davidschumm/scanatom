@@ -2,7 +2,18 @@ $ pip install virtualenv
 
 $ python -m venv virtual
 
-$ pip install flask
+
+Activates virtual mode
+$ virtual\Scripts\activate.bat
+
+Installs your packages
+$ pip install xxxxx
+or 
+$ pip install -r requirements.txt
+
+
+Deactivates venv
+$ deactivate
 
 $ set FLASK_ENV=development
 (enables debug mode)
@@ -11,6 +22,7 @@ $ set FLASK_APP=server
 (my flask app file name is server.py)
 
 $ flask run
+
 
 
 

@@ -10,6 +10,7 @@ from flask_pymongo import PyMongo
 from hashlib import sha256
 import json
 from cfg import config
+from utils import get_rand_str
 from datetime import datetime
 
 app = Flask(__name__)
@@ -18,35 +19,97 @@ app.secret_key = b'jnfew890432'
 mongo = PyMongo(app)
 
 @app.route("/")
-def show_home():
-	user_documents = mongo.db.users.find({})
-	print(user_documents)
+def show_index():
+	if not 'userToken' in session:
+		session['error'] = 'You must login to access this page'
+		return redirect('/login')
 
-	for doc in user_documents:
-		print(doc)
+	# Validate user token
+	token_document = mongo.db.user_tokens.find_one({
+		'sessionHash': session['userToken']
+	})
 
-	return "Home Page"
+	if token_document is None:
+		session.pop('userToken', None)
+		session['error'] = 'You must login again to access this page'
+		return redirect('/login')
+
+	return render_template('files.html')
 
 @app.route("/login")
 def show_login():
+	if 'userToken' in session:
+		# TODO Validate user token from the database
+		# TODO Redirect to / if session is valid
+		pass
+
 	signupSuccess = ''
 	if 'signupSuccess' in session:
 		signupSuccess = session['signupSuccess']
 		# Just want to show once, after refresh we pop it
 		session.pop('signupSuccess', None)
+
+	error = ''
+	if 'error' in session:
+		error = session['error']
+		#remove something from session
+		session.pop('error', None)
 	
-	return render_template('login.html', signupSuccess=signupSuccess)
+	return render_template('login.html',
+			signupSuccess=signupSuccess,
+			error=error)
 
 @app.route("/check_login", methods=["POST"])
 def check_login():
-	email = request.form['email']
-	password = request.form['password']
+	try:
+		email = request.form['email']
+	except KeyError:
+		email = ''
 
-	user_documents = mongo.db.users.find({"email": email })
+	try:
+		password = request.form['password']
+	except:
+		password = ''
+	
 
-	print('Email is : ' + email)
-	print('Password is : ' + password)
-	return 'I should now check email ' + email + ' and password'
+	# Check if email is blank
+
+	if not len(email) > 0:
+		session['error'] = 'Email is required'
+		return redirect('/login')
+
+	# Check if password is blank
+	if not len(password) > 0:
+		session['error'] = 'Password is required'
+		return redirect('/login')
+
+	# Find email in database
+	user_document = mongo.db.users.find_one({"email": email })
+	if user_document is None:
+		# user document with the given email is not found
+		session['error'] = 'No account exists with this email address'
+		return redirect('/login')
+
+
+	# Verify that password hash matches with original
+	password_hash = sha256(password.encode('utf-8')).hexdigest()
+	if user_document['password'] != password_hash:
+		session['error'] = 'Invalid password'
+		return redirect('/login')
+
+	# Generate token and save it in session\
+	random_string = get_rand_str()
+	randomSessionHash = sha256(random_string.encode('utf-8')).hexdigest()
+	token_object = mongo.db.user_tokens.insert_one({
+			'userId': user_document['_id'],
+			'sessionHash': randomSessionHash,
+			'createdAt': datetime.utcnow(),
+		})
+
+	session['userToken'] = randomSessionHash
+
+	# If email and password are good we will redirect to index route
+	return redirect('/')
 
 
 @app.route("/signup")
@@ -69,9 +132,6 @@ def handle_signup():
 		password = request.form['password']
 	except:
 		password = ''
-
-	print(email)
-	print(password)
 
 	# Check if email is blank
 	if not len(email) > 0:
@@ -112,4 +172,10 @@ def handle_signup():
 
 	#Redirect to Login page
 	session['signupSuccess'] = 'Your user account is ready. You may now login!'
+	return redirect('/login')
+
+@app.route('/logout')
+def logout_user():
+	session.pop('userToken', None)
+	session['signupSuccess'] = 'You are now logged out.'
 	return redirect('/login')

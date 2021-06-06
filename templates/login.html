@@ -19,6 +19,13 @@
 
 		{% endif %}
 
+		{% if error != '' %}
+    		<div class="mt-5 alert alert-danger" role="alert">
+    			{{ error }}
+    		</div>
+
+    	{% endif %}
+
 		<form method="post" action="/check_login">
 		  <div class="form-group mt-5">
 		    <label for="email">Email address</label>
