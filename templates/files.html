@@ -5,5 +5,22 @@
 {% endblock %}
 
 {% block content %}
-	The files should come here
+	<div class="header">
+		{% include 'partials/header.html' %}
+	</div>
+
+	<div class="content">
+		<div class="row">
+			<div class="col">
+				<h4>Uploaded Files</h4>		
+			</div> 
+	
+
+			<div class="col">
+				<button type="button" class="btn btn-primary">
+					Upload
+				</button>
+			</div>	
+		</div>
+	</div>
 {% endblock %}
