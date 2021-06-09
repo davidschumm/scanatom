@@ -10,17 +10,51 @@
 	</div>
 
 	<div class="content">
-		<div class="row">
+		<div class="row mt-4">
 			<div class="col">
-				<h4>Uploaded Files</h4>		
+				<p>Uploaded Files</p>		
 			</div> 
 	
 
-			<div class="col">
+			<div class="col text-right">
 				<button type="button" class="btn btn-primary">
 					Upload
 				</button>
 			</div>	
+		</div>
+
+		<div class="mt-4">
+			<table class="table table-bordered">
+			  <thead class="table-light">
+			  <tr>
+			  		<th scope="col" style="width:40%;">File Name</th>
+			  		<th scope="col" style="width:20%">Size</th>
+			  		<th scope="col" style="width:25%">Uploaded</th>
+			  		<th scope="col">&nbsp;</th>
+			  </tr>	
+			  </thead>
+			  <tbody>
+			        <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>@mdo</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>@fat</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td>Larry the Bird</td>
+				      <td>the Bird</td>
+				      <td>@twitter</td>
+				    </tr>
+			  </tbody>
+			</table>
+			
 		</div>
 	</div>
 {% endblock %}
