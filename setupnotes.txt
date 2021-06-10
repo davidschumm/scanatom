@@ -6,6 +6,9 @@ $ python -m venv virtual
 Activates virtual mode
 $ virtual\Scripts\activate.bat
 
+Activates virtual mode in git
+$ source virtual/Scripts/activate
+
 Installs your packages
 $ pip install xxxxx
 or 
