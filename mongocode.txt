@@ -5,7 +5,6 @@ Files:
 Object1:
 
 {
-    "_id" : ObjectId("60c182a3c357b601a6aa7b38"),
     "userId" : ObjectId("60b5a34ad4f3d3cfd70d36ed"),
     "originalFileName" : "setupnotes.txt",
     "fileType" : "txt",
@@ -18,7 +17,6 @@ Object1:
 
 Object2:
 {
-    "_id" : ObjectId("60c18472c357b601a6aa7bc9"),
     "userId" : ObjectId("60bc283b3242e147e33a7e5a"),
     "originalFileName" : "test_img.jpg",
     "fileType" : "jpg",

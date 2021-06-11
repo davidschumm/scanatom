@@ -34,24 +34,27 @@
 			  </tr>	
 			  </thead>
 			  <tbody>
-			        <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td>Larry the Bird</td>
-				      <td>the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
+			  	{% for f in uploaded_files %}
+			    <tr>
+				    <td>
+				    	{{ f['originalFileName'] }}
+					</td>
+					<td>
+				    	{{ f['fileSize'] }}
+					</td>
+				    <td>
+				    	{{ f['createdAt'] }}
+				  	</td>
+				    <td>
+				      	<button type="button" class="btn btn-info">
+				      		Share
+				      	</button>
+				      	<button type="button" class="btn btn-danger">
+				      		Delete
+				      	</button>
+				  	</td>
+				</tr>
+				{% endfor %}
 			  </tbody>
 			</table>
 			

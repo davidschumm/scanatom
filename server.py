@@ -6,6 +6,7 @@ from flask import (
 	redirect,
 	session
 )
+import pymongo 
 from flask_pymongo import PyMongo
 from hashlib import sha256
 import json
@@ -34,7 +35,34 @@ def show_index():
 		session['error'] = 'You must login again to access this page'
 		return redirect('/login')
 
-	return render_template('files.html')
+	userId = token_document['userId']
+
+	user = mongo.db.users.find_one({
+		'_id': userId
+	})
+	
+	uploaded_files = mongo.db.files.find({
+		'userId': userId,
+		'isActive': True
+	}).sort([("createdAt", pymongo.DESCENDING)])
+
+
+	# TODO create an array with the formatted data to display on the home page below is an example
+	# this is how we will show the data in the files.html page
+	# will also need to fix the email at the top of the page	
+	
+	# formatted_file_data = []
+	# for f in uploaded_files:
+	#	f['formattedDate'] = datetime.strftime(f['createdAt'])
+	#	formatted_file_data.append()
+
+	# We will send the 'formated_file_data' to the render template function below in place of uploaded files
+
+	return render_template(
+		'files.html',
+		uploaded_files=uploaded_files,
+		user=user
+	)
 
 @app.route("/login")
 def show_login():
