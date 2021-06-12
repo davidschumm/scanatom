@@ -1,0 +1,11 @@
+
+
+
+- In order to access form fields in our actions we have to give them a name tag.
+ex. 
+	<input 
+                  type="file"
+                  class="form-control-file"
+                  id="fileToUpload"
+                  name="uploadedFile"
+         />

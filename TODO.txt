@@ -1,6 +1,0 @@
-TODO:
-
-1) Write function in utils to convert bytes to a one decimal place number. 
-	ex. 23300 bytes to 3.0 KB. (note: not sure if this is actually correct just showing example)
-
-2) Create function to show date as "6 days ago" etc.

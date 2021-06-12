@@ -1,0 +1,100 @@
+$ pip install virtualenv
+
+$ python -m venv virtual
+
+
+Activates virtual mode
+$ virtual\Scripts\activate.bat
+
+Activates virtual mode in gitbash
+$ source virtual/Scripts/activate
+
+Installs your packages
+$ pip install xxxxx
+or 
+$ pip install -r requirements.txt
+
+
+Deactivates venv
+$ deactivate
+
+$ set FLASK_ENV=development
+(enables debug mode)
+
+$ set FLASK_APP=server 
+(my flask app file name is server.py)
+
+$ flask run
+
+
+
+
+Videos
+1. https://www.youtube.com/watch?v=YzUEhtHgX64
+2. https://www.youtube.com/watch?v=z1dIrYMmQy4
+3. https://www.youtube.com/watch?v=GVCvC-gDSAM
+4. https://www.youtube.com/watch?v=9XeZMvGXCSw
+
+https://flinkhub.com/static/files/File-sharing-webapp-specifications.pdf
+
+https://robomongo.org/download
+https://flask-pymongo.readthedocs.io/en/latest/
+https://www.mongodb.com/try/download/community
+https://flask.palletsprojects.com/en/2.0.x/quickstart/#debug-mode
+
+https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/adding-an-existing-project-to-github-using-the-command-line
+
+Changing git repo branch
+1) check the branches
+$ git branch
+
+2) updating entire branch
+$ git push origin main
+
+3) pulling
+$ git pull origin main
+
+4) Looking at directory
+$ ls
+
+5) look at status
+$ git status
+
+6) add all updated files and stage for commit
+$ git add .
+
+or just one file
+
+$ git add blue.html
+
+
+7.1) Commit the file to the local repository (main)
+$ git commit -m "Added a table to the home page"
+(the quotations are for the commit message"
+
+7.2) Commit the file to the local repository
+$ git commit -a 
+ 	
+	When entered into VIM interface, type your message,
+	hit escape, then type :wq to save the commit
+
+8) push changes to main branch
+$ git push origin main
+
+
+#### Starting new git repo####
+1) $ git init
+2) $ echo 'venv' > .gitignore
+3) $ source virtual/Scripts/activate
+4) install packages with pip
+5) $ pip freeze > requirements.txt
+2) $ git add .
+3) $ git commit -am 'initial commit'
+
+
+##### Cloning Repository ######
+1) cd /c/gitgolf
+	- go to the directory you want to clone
+2) git clone https://github.com/davidschumm/gitgolf.git
+
+3) 

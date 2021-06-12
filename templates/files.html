@@ -5,59 +5,73 @@
 {% endblock %}
 
 {% block content %}
-	<div class="header">
-		{% include 'partials/header.html' %}
+<div class="header">
+	{% include 'partials/header.html' %}
+</div>
+
+<div class="content">
+	<div class="row mt-4">
+		<div class="col">
+			<p>Uploaded Files</p>		
+		</div> 
+
+
+		<div class="col text-right">
+			<button
+				type="button"
+				class="btn btn-primary"
+				data-bs-toggle="modal"
+				data-bs-target="#uploadModal"
+			>
+				Upload
+			</button>
+		</div>	
 	</div>
 
-	<div class="content">
-		<div class="row mt-4">
-			<div class="col">
-				<p>Uploaded Files</p>		
-			</div> 
-	
-
-			<div class="col text-right">
-				<button type="button" class="btn btn-primary">
-					Upload
-				</button>
-			</div>	
+	{% if error != '' %}
+		<div class="mt-5 alert alert-danger" role="alert">
+			{{ error }}
 		</div>
+	{% endif %}
 
-		<div class="mt-4">
-			<table class="table table-bordered">
-			  <thead class="table-light">
-			  <tr>
-			  		<th scope="col" style="width:40%;">File Name</th>
-			  		<th scope="col" style="width:20%">Size</th>
-			  		<th scope="col" style="width:25%">Uploaded</th>
-			  		<th scope="col">&nbsp;</th>
-			  </tr>	
-			  </thead>
-			  <tbody>
-			  	{% for f in uploaded_files %}
-			    <tr>
-				    <td>
-				    	{{ f['originalFileName'] }}
-					</td>
-					<td>
-				    	{{ f['fileSize'] }}
-					</td>
-				    <td>
-				    	{{ f['createdAt'] }}
-				  	</td>
-				    <td>
-				      	<button type="button" class="btn btn-info">
-				      		Share
-				      	</button>
-				      	<button type="button" class="btn btn-danger">
-				      		Delete
-				      	</button>
-				  	</td>
-				</tr>
-				{% endfor %}
-			  </tbody>
-			</table>
-			
-		</div>
+	<div class="mt-4">
+		<table class="table table-bordered">
+		  <thead class="table-light">
+		  <tr>
+		  		<th scope="col" style="width:40%;">File Name</th>
+		  		<th scope="col" style="width:20%">Size</th>
+		  		<th scope="col" style="width:25%">Uploaded</th>
+		  		<th scope="col">&nbsp;</th>
+		  </tr>	
+		  </thead>
+		  <tbody>
+		  	{% for f in uploaded_files %}
+		    <tr>
+			    <td>
+			    	{{ f['originalFileName'] }}
+				</td>
+				<td>
+			    	{{ f['fileSize'] }}
+				</td>
+			    <td>
+			    	{{ f['createdAt'] }}
+			  	</td>
+			    <td>
+			      	<button type="button" class="btn btn-info">
+			      		Share
+			      	</button>
+			      	<button type="button" class="btn btn-danger">
+			      		Delete
+			      	</button>
+			  	</td>
+			</tr>
+			{% endfor %}
+		  </tbody>
+		</table>
+		
 	</div>
+
+	{% include 'partials/upload-modal.html' %}
+
+</div>
 {% endblock %}
