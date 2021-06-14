@@ -9,3 +9,6 @@ ex.
                   id="fileToUpload"
                   name="uploadedFile"
          />
+
+
+2) CTRL+SHIFT+R is how you hard reloaded a webpage so it reloads the caches. Do this if you new CSS isnt loading on your webpage after youve made changes.

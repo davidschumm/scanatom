@@ -7,13 +7,14 @@
 	</title>
 
 	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/styles.css">
+
 
 	<style type="text/css">
 
 	</style>
 
-	<script src="/static/jquery-3.6.0.min.js"></script>
-	<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>	
+	
 
 </head>
 
@@ -23,6 +24,11 @@
 		{% endblock %}
 	</div>
 
+	<script src="/static/jquery-3.6.0.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>	
+	
 
+	{% block scripts %}
+	{% endblock %}
 </body>
 </html>
