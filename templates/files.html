@@ -57,7 +57,12 @@
 			    	{{ f['createdAt'] }}
 			  	</td>
 			    <td>
-			      	<button type="button" class="btn btn-info btn-share-file">
+			      	<button 
+			      			type="button"
+			      			class="btn btn-info btn-share-file"
+			      			data-file-id="{{ f['_id'] }}"
+			      			data-file-name="{{ f['originalFileName'] }}"
+			      	>
 			      		Share
 			      	</button>
 			      	<button type="button" class="btn btn-danger">

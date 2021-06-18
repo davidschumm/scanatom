@@ -25,6 +25,15 @@ $ set FLASK_ENV=development
 $ set FLASK_APP=server 
 (my flask app file name is server.py)
 
+$ export FLASK_ENV=development
+(Debug mode in gitbash)
+
+$ export FLASK_APP=server.py
+(GITBASH)
+
+
+
+
 $ flask run
 
 

@@ -18,9 +18,12 @@ import os
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = config['mongo_uri']
-app.config['UPLOAD_FOLDER'] = 'C:/Users/david/ScanAtom/scanatom/uploads'
+#app.config['UPLOAD_FOLDER'] = 'C:/Users/david/ScanAtom/scanatom/uploads'
+app.config['UPLOAD_FOLDER'] = 'C:/ScanAtom/scanatom/uploads'
 app.secret_key = b'jnfew890432'
 mongo = PyMongo(app)
+
+#
 
 @app.route("/")
 def show_index():
