@@ -88,9 +88,9 @@ $ git push origin main
 3) $ source virtual/Scripts/activate
 4) install packages with pip
 5) $ pip freeze > requirements.txt
-2) $ git add .
-3) $ git commit -am 'initial commit'
-
+6) $ git add .
+7) $ git commit -am 'initial commit'
+8) $ git push origin main
 
 ##### Cloning Repository ######
 1) cd /c/gitgolf
