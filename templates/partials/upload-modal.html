@@ -1,0 +1,36 @@
+<!-- Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Upload New File</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Click below to upload a file or Drag and drop the file you want to upload to the container below.
+
+        <form 
+              class="mt-4" 
+              method="post" 
+              action="/handle_file_upload"
+              enctype="multipart/form-data" 
+        >
+          <div class="mb-3">
+            <label for="fileToUpload">Choose File Below</label>
+            <input 
+                  class="form-control"
+                  type="file"
+                  id="fileToUpload"
+                  name="uploadedFile">
+          </div>
+
+          <button type="submit" 
+                  class="btn btn-primary">
+              Upload File
+          </button>
+          
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

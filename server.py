@@ -8,14 +8,17 @@ from flask import (
 )
 import pymongo 
 from flask_pymongo import PyMongo
+from werkzeug.utils import secure_filename
 from hashlib import sha256
 import json
 from cfg import config
 from utils import get_rand_str
 from datetime import datetime
+import os
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = config['mongo_uri']
+app.config['UPLOAD_FOLDER'] = 'C:/Users/david/ScanAtom/scanatom/uploads'
 app.secret_key = b'jnfew890432'
 mongo = PyMongo(app)
 
@@ -34,6 +37,12 @@ def show_index():
 		session.pop('userToken', None)
 		session['error'] = 'You must login again to access this page'
 		return redirect('/login')
+
+	error = ''
+	if 'error' in session:
+		error = session['error']
+		#remove something from session
+		session.pop('error', None)
 
 	userId = token_document['userId']
 
@@ -61,7 +70,8 @@ def show_index():
 	return render_template(
 		'files.html',
 		uploaded_files=uploaded_files,
-		user=user
+		user=user,
+		error=error
 	)
 
 @app.route("/login")
@@ -207,3 +217,70 @@ def logout_user():
 	session.pop('userToken', None)
 	session['signupSuccess'] = 'You are now logged out.'
 	return redirect('/login')
+
+
+
+
+def allowed_file(filename):
+	ALLOWED_EXTENSIONS = ['jpg', 'txt', 'jpeg', 'gif', 'png']
+	return '.' in filename and \
+    	filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@app.route('/handle_file_upload', methods=['POST'])
+def handle_file_upload():
+	if not 'userToken' in session:
+		session['error'] = 'You must login to access this page'
+		return redirect('/login')
+
+	# Validate user token
+	token_document = mongo.db.user_tokens.find_one({
+		'sessionHash': session['userToken']
+	})
+
+	if token_document is None:
+		session.pop('userToken', None)
+		session['error'] = 'You must login again to access this page'
+		return redirect('/login')
+
+
+
+	if 'uploadedFile' not in request.files:
+		session['error'] = 'No file uploaded'
+		return redirect('/')
+
+
+	file = request.files['uploadedFile'] 
+	# the word in parenthesis is the name of the input tag in upload-modal.html
+	print('I have got the file')
+	print(file)
+
+	if file.filename == '':
+		session['error'] = 'No selected file'
+		return redirect('/')
+
+	if not allowed_file(file.filename):
+		session['error'] = 'File type not allowed'
+		return redirect('/')
+
+	# TODO file size check
+
+	extention = file.filename.rsplit('.', 1)[1].lower()
+	filename = secure_filename(file.filename)
+	filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+	file.save(filepath)
+
+
+	result = mongo.db.files.insert_one({
+	'userId': token_document['userId'],
+	'originalFileName': file.filename,
+	'fileType': extention,
+	'fileSize': 0, #TODO once we get file size above we will replace the 0 with filesize variable
+	'fileHash': '', #TODO hash the file using something like this -> sha256(open(filepath).read())
+	'filePath': filepath, 
+	'isActive': True,
+	'createdAt': datetime.utcnow(),
+	})
+
+
+	return redirect('/')

@@ -1,0 +1,41 @@
+
+
+
+
+Downloads:
+
+
+Static folder:
+
+- Bootstrap:
+https://getbootstrap.com/docs/5.0/getting-started/download/
+
+- Jquery:
+https://jquery.com/download/
+(used compressed version and saved as a file to my static folder, only need to do this once so javascript will work with bootstrap)
+
+
+
+
+
+Database:
+
+- Mongodb:
+https://www.mongodb.com/try/download/community
+
+- Robo3T (mongo gui):
+https://robomongo.org/download
+
+* download Robo3T only, not the studio version*
+
+
+
+Support:
+
+- for uploading files using html form:
+https://www.w3schools.com/html/html_forms_attributes.asp
+
+- bootstrap upload button thing:
+https://getbootstrap.com/docs/5.0/components/modal/
+
+-

@@ -6,11 +6,16 @@
 		{% endblock %}
 	</title>
 
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/static/styles.css">
+
 
 	<style type="text/css">
 
 	</style>
+
+	
+
 </head>
 
 <body>
@@ -19,5 +24,11 @@
 		{% endblock %}
 	</div>
 
+	<script src="/static/jquery-3.6.0.min.js"></script>
+	<script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>	
+	
+
+	{% block scripts %}
+	{% endblock %}
 </body>
 </html>
