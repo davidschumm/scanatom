@@ -18,8 +18,8 @@ import os
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = config['mongo_uri']
-#app.config['UPLOAD_FOLDER'] = 'C:/Users/david/ScanAtom/scanatom/uploads'
-app.config['UPLOAD_FOLDER'] = 'C:/ScanAtom/scanatom/uploads'
+app.config['UPLOAD_FOLDER'] = 'C:/Users/david/ScanAtom/scanatom/uploads'
+#app.config['UPLOAD_FOLDER'] = 'C:/ScanAtom/scanatom/uploads'
 app.secret_key = b'jnfew890432'
 mongo = PyMongo(app)
 
@@ -287,3 +287,9 @@ def handle_file_upload():
 
 
 	return redirect('/')
+
+@app.route('/download/<fileId>/<fileNameSlugified>', methods=['GET'])
+def showDownloadPage(fileId, fileNameSlugified):
+	print("File ID is: " + fileId)
+
+	return "Hello, download page will come here for file: " + fileNameSlugified

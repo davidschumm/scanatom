@@ -1,0 +1,15 @@
+TODO:
+
+1) Write function in utils to convert bytes to a one decimal place number. 
+	ex. 23300 bytes to 3.0 KB. (note: not sure if this is actually correct just showing example)
+
+2) Create function to show date as "6 days ago" etc.
+
+3) need to add a drag and drop function for uploading files
+
+4) Need to check and throw error if file size is too large for the download.
+	Temporarily: Maximum allowed file size: 20 MB
+		     Maximum total upload size: 300 MB
+
+5) Need to write our slugify function in the files-pages javascript file 
+	- We should use regex, i will find a function I did a while ago

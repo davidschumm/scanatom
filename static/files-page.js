@@ -24,7 +24,7 @@ $('.btn-share-file').on('click', function() {
 	const fileName = $this.attr('data-file-name');
 	const fileNameSlugified = slugify(fileName);
 
-	const permalink = 'http://localhost:27017' + '/a/' + fileId + '/' + fileNameSlugified;
+	const permalink = 'http://localhost:27017' + '/download/' + fileId + '/' + fileNameSlugified;
 
 	console.log("permalink is: " + permalink);
 
