@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}
+	Download file - ScanAtomdb
+{% endblock %}
+
+{% block content %}
+<div class="header">
+	{% include 'partials/header.html' %}
+</div>
+
+
+<div class="content">
+	<p>Click on the button below to download the file: <b>{{ file['originalFileName'] }}</b></p>
+
+	<button class="btn btn-success">
+		Download
+	</button>
+</div>
+
+
+{% endblock %}
+

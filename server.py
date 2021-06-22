@@ -15,6 +15,7 @@ from cfg import config
 from utils import get_rand_str
 from datetime import datetime
 import os
+from bson.objectid import ObjectId
 
 app = Flask(__name__)
 app.config["MONGO_URI"] = config['mongo_uri']
@@ -292,4 +293,42 @@ def handle_file_upload():
 def showDownloadPage(fileId, fileNameSlugified):
 	print("File ID is: " + fileId)
 
-	return "Hello, download page will come here for file: " + fileNameSlugified
+	if not 'userToken' in session:
+		session['error'] = 'You must login to access this page'
+		return redirect('/login')
+
+	# Validate user token
+	token_document = mongo.db.user_tokens.find_one({
+		'sessionHash': session['userToken']
+	})
+
+	if token_document is None:
+		session.pop('userToken', None)
+		session['error'] = 'You must login again to access this page'
+		return redirect('/login')
+
+
+	userId = token_document['userId']
+
+	user = mongo.db.users.find_one({
+		'_id': userId
+	})
+	
+	
+	file_object = None
+	
+	try:
+		file_object = mongo.db.files.find_one({
+				'_id': ObjectId(fileId)
+		})
+	except:
+		pass
+
+	if file_object is None:
+		return abort(404)
+
+
+	return render_template(
+		'download.html',
+		file=file_object,
+		user=user)
